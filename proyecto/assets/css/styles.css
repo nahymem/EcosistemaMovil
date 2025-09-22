@@ -14,7 +14,7 @@
   --radius-lg: 16px;
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --glass: rgba(255, 255, 255, 0.8);
+  --glass: rgba(255, 255, 255, 0.6);
   --glass-border: rgba(255, 255, 255, 0.18);
   --container: clamp(320px, 94%, 1200px);
   --transition: all 0.3s ease;
@@ -37,6 +37,12 @@ body {
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Fix for no-scroll on mobile menu */
+body.no-scroll {
+  overflow: hidden;
 }
 
 .container {
@@ -91,7 +97,7 @@ img {
   font-weight: 500;
 }
 
-/* Header con efecto glass */
+/* Header con efecto glass y blur */
 .site-header {
   background: var(--glass);
   border-bottom: 1px solid var(--glass-border);
@@ -192,9 +198,25 @@ img {
   transition: top 0.1s ease-out, transform 0.1s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-/* Nav */
+/* Nav para móvil: se desplaza desde la derecha */
 .nav {
-  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100vh;
+  background: var(--surface);
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 65;
+  padding: 2rem 1rem;
+}
+
+.nav.is-open {
+  transform: translateX(0);
+  visibility: visible;
 }
 
 .nav-list {
@@ -207,7 +229,7 @@ img {
 }
 
 .nav-list a {
-  display: inline-block;
+  display: block;
   padding: 0.75rem 1rem;
   border-radius: var(--radius);
   font-weight: 500;
@@ -407,13 +429,40 @@ img {
   gap: 1.5rem;
 }
 
+/* Nuevos estilos para los puntos en forma de bloque */
+.feature-points {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
 .feature {
-  background: var(--surface);
   padding: 1.5rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
+
+/* Intercalado de colores para los bloques de características */
+.feature.feature-1 {
+    background: var(--surface);
+}
+
+.feature.feature-2 {
+    background: var(--bg);
+}
+
+.feature.feature-3 {
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.feature.feature-4 {
+    background: rgba(255, 0, 0, 0.05); /* Color para puntos negativos */
+}
+
 
 .feature:hover {
   transform: translateY(-5px);
@@ -423,22 +472,17 @@ img {
 .feature-icon {
   width: 50px;
   height: 50px;
+  min-width: 50px;
   border-radius: 12px;
   background: rgba(59, 130, 246, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
 }
 
 .feature-icon svg {
   width: 24px;
   height: 24px;
-}
-
-.feature h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.2rem;
 }
 
 .feature p {
@@ -482,20 +526,6 @@ img {
   padding: 1.5rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-}
-
-/* Bullets list */
-.bullets {
-  padding-left: 1.5rem;
-  color: var(--text-light);
-}
-
-.bullets li {
-  margin-bottom: 0.5rem;
-}
-
-.bullets li::marker {
-  color: var(--primary);
 }
 
 /* Form */
@@ -644,6 +674,14 @@ input:focus, textarea:focus {
 @media (min-width: 768px) {
   .nav {
     display: block;
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    box-shadow: none;
+    transform: none;
+    visibility: visible;
+    padding: 0;
   }
   
   .hamburger {
@@ -665,6 +703,26 @@ input:focus, textarea:focus {
     align-items: center;
     gap: 3rem;
   }
+
+  .hero-figure {
+    position: relative;
+    padding: 2rem;
+  }
+
+  .floating-card.card-1 {
+    top: 5%;
+    left: 0;
+  }
+
+  .floating-card.card-2 {
+    top: 40%;
+    right: 0;
+  }
+
+  .floating-card.card-3 {
+    bottom: 5%;
+    left: 5%;
+  }
   
   .hero-text h1 {
     font-size: 2.5rem;
@@ -677,9 +735,22 @@ input:focus, textarea:focus {
   .card-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  /* Justificación y alineación en tablet y desktop */
+  .short, .feature p, .card p {
+    text-align: justify;
+  }
+
+  .feature-points {
+      grid-template-columns: repeat(2, 1fr);
+  }
   
   .split {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .split .feature-points {
+      grid-template-columns: 1fr;
   }
   
   .form-grid {
@@ -702,6 +773,42 @@ input:focus, textarea:focus {
   }
 }
 
+/* Mobile styles for floating cards */
+@media (max-width: 767px) {
+  .hero-figure {
+    position: relative;
+    padding: 2rem 1rem;
+  }
+
+  .floating-card {
+    position: absolute;
+    width: 120px;
+    padding: 0.75rem;
+  }
+  
+  .floating-card.card-1 {
+    top: 10%;
+    left: 5%;
+    transform: none;
+  }
+
+  .floating-card.card-2 {
+    top: 50%;
+    right: 5%;
+    transform: none;
+  }
+
+  .floating-card.card-3 {
+    bottom: 10%;
+    left: 15%;
+    transform: none;
+  }
+
+  .feature-points {
+      grid-template-columns: 1fr;
+  }
+}
+
 /* Media queries: >=1024px (desktop) */
 @media (min-width: 1024px) {
   .container {
@@ -718,5 +825,18 @@ input:focus, textarea:focus {
   
   .section {
     padding: 4rem 0;
+  }
+
+  .split .feature-points {
+      grid-template-columns: 1fr 1fr;
+  }
+  
+  /* Ajuste de justificación para desktop */
+  .short, .card p {
+    text-align: justify;
+  }
+  
+  .feature p {
+    text-align: left; /* Alineación a la izquierda en los bloques de puntos para mejor lectura */
   }
 }
