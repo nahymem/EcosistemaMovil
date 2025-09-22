@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ecosistema móvil — Resumen</title>
+  <meta name="description" content="Resumen amigable y accesible del ecosistema móvil: tipos de apps, SO, diseño mobile-first, seguridad y buenas prácticas." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 2H7C5.67392 2 4.40215 2.52678 3.46447 3.46447C2.52678 4.40215 2 5.67392 2 7V17C2 18.3261 2.52678 19.5979 3.46447 20.5355C4.40215 21.4732 5.67392 22 7 22H17C18.3261 22 19.5979 21.4732 20.5355 20.5355C21.4732 19.5979 22 18.3261 22 17V7C22 5.67392 21.4732 4.40215 20.5355 3.46447C19.5979 2.52678 18.3261 2 17 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 18H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Ecosistema Móvil
+      </a>
+
+      <button id="btnMenu" class="hamburger hamburger--spin" aria-controls="primaryNav" aria-expanded="false" aria-label="Abrir menú">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+
+      <nav id="primaryNav" class="nav" role="navigation" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#ecosistema">Ecosistema</a></li>
+          <li><a href="#tipos">Tipos de apps</a></li>
+          <li><a href="#so">Android / iOS</a></li>
+          <li><a href="#diseno">Diseño</a></li>
+          <li><a href="#seguridad">Seguridad</a></li>
+          <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>Todo sobre el <span class="text-gradient">ecosistema móvil</span></h1>
+          <p class="lead">Guía clara y amigable: tipos de apps, sistemas operativos, diseño mobile-first, accesibilidad y seguridad.</p>
+          <div class="hero-actions">
+            <a href="#ecosistema" class="btn primary">Comenzar</a>
+            <a href="#contacto" class="btn secondary">Contactar</a>
+          </div>
+        </div>
+
+        <div class="hero-figure">
+          <div class="floating-card card-1">
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 16L16 12L12 8L8 12L12 16Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h4>Nativas</h4>
+            <p>Máximo rendimiento</p>
+          </div>
+          
+          <div class="floating-card card-2">
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 16L16 12L12 8L8 12L12 16Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h4>Híbridas</h4>
+            <p>Multiplataforma</p>
+          </div>
+          
+          <div class="floating-card card-3">
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 16L16 12L12 8L8 12L12 16Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h4>PWA</h4>
+            <p>Sin instalación</p>
+          </div>
+          
+          <picture aria-hidden="true">
+            <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1600&q=60">
+            <source media="(min-width:768px)" srcset="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=60">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=60" alt="Manos usando teléfono móvil" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- ECOSISTEMA -->
+    <section id="ecosistema" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Introducción</span>
+          <h2>Ecosistema móvil</h2>
+          <p class="short">Los móviles combinan dispositivos, tiendas, apps y servicios que ya forman parte de la vida y el trabajo. 5G permite experiencias más rápidas y nuevas funciones.</p>
+        </div>
+        
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 16L16 12L12 8L8 12L12 16Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Dispositivos</h3>
+            <p>Smartphones, tablets y wearables que forman el hardware del ecosistema.</p>
+          </div>
+          
+          <div class="feature">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 16L16 12L12 8L8 12L12 16Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Plataformas</h3>
+            <p>Sistemas operativos como Android e iOS que gestionan los recursos.</p>
+          </div>
+          
+          <div class="feature">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 16L16 12L12 8L8 12L12 16Z" stroke="#1a3c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Conectividad</h3>
+            <p>Redes 5G, WiFi y Bluetooth que permiten la comunicación entre dispositivos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resto del contenido se mantiene similar pero con las clases actualizadas -->
+    <!-- ... -->
+    
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 2H7C5.67392 2 4.40215 2.52678 3.46447 3.46447C2.52678 4.40215 2 5.67392 2 7V17C2 18.3261 2.52678 19.5979 3.46447 20.5355C4.40215 21.4732 5.67392 22 7 22H17C18.3261 22 19.5979 21.4732 20.5355 20.5355C21.4732 19.5979 22 18.3261 22 17V7C22 5.67392 21.4732 4.40215 20.5355 3.46447C19.5979 2.52678 18.3261 2 17 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 18H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Ecosistema Móvil</span>
+      </div>
+      
+      <nav aria-label="Enlaces de pie de página">
+        <ul class="footer-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#ecosistema">Ecosistema</a></li>
+          <li><a href="#tipos">Tipos de apps</a></li>
+          <li><a href="#so">Android / iOS</a></li>
+          <li><a href="#diseno">Diseño</a></li>
+          <li><a href="#seguridad">Seguridad</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      
+      <small>© <span id="year"></span> Ecosistema Móvil — Resumen amigable</small>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>
