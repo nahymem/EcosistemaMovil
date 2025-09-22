@@ -1,34 +1,42 @@
-// script.js - Versión mejorada
+// script.js - Versión mejorada y reparada
 document.addEventListener('DOMContentLoaded', function () {
   const btnMenu = document.getElementById('btnMenu');
   const nav = document.getElementById('primaryNav');
   const year = document.getElementById('year');
+  const body = document.body;
+
+  // Set current year in footer
   year.textContent = new Date().getFullYear();
 
-  // Menu toggle for mobile
+  // Mobile menu toggle
   btnMenu.addEventListener('click', function () {
-    this.classList.toggle('is-active');
-    const expanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', String(!expanded));
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
     
-    if (!expanded) {
-      nav.style.display = 'block';
-      // move focus into nav
+    // Toggle menu state
+    this.setAttribute('aria-expanded', String(!isExpanded));
+    this.classList.toggle('is-active');
+    nav.classList.toggle('is-open');
+    body.classList.toggle('no-scroll'); // Prevent body scroll when menu is open
+    
+    // Focus management for accessibility
+    if (!isExpanded) {
       const firstLink = nav.querySelector('a');
       if (firstLink) firstLink.focus();
     } else {
-      nav.style.display = '';
+      this.focus();
     }
   });
 
   // Close mobile nav on link click
   nav.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
-      if (window.innerWidth < 768) {
+      // Only close if menu is active
+      if (btnMenu.classList.contains('is-active')) {
         btnMenu.setAttribute('aria-expanded', 'false');
         btnMenu.classList.remove('is-active');
-        nav.style.display = '';
-        btnMenu.focus();
+        nav.classList.remove('is-open');
+        body.classList.remove('no-scroll');
+        btnMenu.focus(); // Return focus to the menu button
       }
     });
   });
@@ -39,4 +47,15 @@ document.addEventListener('DOMContentLoaded', function () {
       const target = document.querySelector(this.getAttribute('href'));
       if (!target) return;
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start'
+      
+      // Calculate position considering fixed header height
+      const headerHeight = document.querySelector('.site-header').offsetHeight;
+      const targetPosition = target.offsetTop - headerHeight;
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    });
+  });
+});
